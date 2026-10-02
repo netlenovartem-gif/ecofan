@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ЭкоФан — сдай мусор, получи баллы</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header>
+    <a href="./" class="logo" id="logo">♻️ ЭкоФан</a>
+    <nav id="nav"></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Сдай бутылку — получи купон на продукты</h1>
+      <p>Копи баллы. Меняй на снаряжение и одежду из переработки. Забирай там же, где сдал.</p>
+      <div class="hero-buttons">
+        <a href="./login.html" class="btn btn-primary">Войти</a>
+        <a href="./map.html" class="btn btn-secondary">Найти точку</a>
+      </div>
+    </section>
+
+    <section class="how">
+      <h2>Как это работает</h2>
+      <div class="steps">
+        <div class="step"><span>1</span><h3>Сдай</h3><p>Принеси вторсырьё на точку приёма</p></div>
+        <div class="step"><span>2</span><h3>Получи</h3><p>Приёмщик начислит баллы по тарифу</p></div>
+        <div class="step"><span>3</span><h3>Копи</h3><p>Стрики и уровни дают множители</p></div>
+        <div class="step"><span>4</span><h3>Меняй</h3><p>Купоны, снаряжение, одежда из переработки</p></div>
+      </div>
+    </section>
+
+    <section class="tariffs">
+      <h2>Тарифы</h2>
+      <div id="tariffs-list" class="tariffs-list"></div>
+    </section>
+
+    <section class="cta">
+      <h2>Готов начать?</h2>
+      <p>Регистрация занимает 30 секунд</p>
+      <a href="./login.html" class="btn btn-primary">Начать</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>ЭкоФан © 2026 · Нижний Новгород</p>
+  </footer>
+
+  <script src="./js/app.js"></script>
+  <script>
+  api('/api/tariffs').then(list => {
+    document.getElementById('tariffs-list').innerHTML = list.map(t =>
+      `<div class="tariff"><span>${t.type}</span><strong>${t.points_per_kg} баллов/кг</strong></div>`
+    ).join('');
+  });
+  initPage();
+</script>
+</body>
+</html>

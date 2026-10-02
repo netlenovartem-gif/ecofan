@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Вход — ЭкоФан</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header>
+    <a href="./" class="logo" id="logo">♻️ ЭкоФан</a>
+    <nav id="nav"></nav>
+  </header>
+
+  <main class="auth">
+    <div class="auth-tabs">
+      <button class="tab active" data-tab="login">Вход</button>
+      <button class="tab" data-tab="register">Регистрация</button>
+    </div>
+
+    <form id="login-form" class="auth-form">
+      <input type="tel" name="phone" placeholder="Телефон" value="+7" pattern="\+7\d{10}" required>
+      <input type="password" name="password" placeholder="Пароль" required>
+      <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
+
+    <form id="register-form" class="auth-form hidden">
+      <input type="text" name="name" placeholder="Имя" required>
+      <input type="tel" name="phone" placeholder="Телефон" value="+7" pattern="\+7\d{10}" required>
+      <input type="password" name="password" placeholder="Пароль" required>
+      <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    </form>
+
+    <p id="auth-error" class="error"></p>
+  </main>
+
+  <script src="./js/app.js"></script>
+  <script>
+    initPage();
+
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.onclick = () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const isLogin = tab.dataset.tab === 'login';
+        document.getElementById('login-form').classList.toggle('hidden', !isLogin);
+        document.getElementById('register-form').classList.toggle('hidden', isLogin);
+      };
+    });
+
+    document.getElementById('login-form').onsubmit = async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target));
+      const json = await api('/api/login', { method: 'POST', body: JSON.stringify(data) });
+      if (json.token) {
+        localStorage.setItem('token', json.token);
+        localStorage.setItem('name', json.name);
+        localStorage.setItem('role', json.role);
+        localStorage.setItem('userId', json.id);
+        location.href = homeLink();
+      } else {
+        document.getElementById('auth-error').textContent = json.error;
+      }
+    };
+
+    document.getElementById('register-form').onsubmit = async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target));
+      const json = await api('/api/register', { method: 'POST', body: JSON.stringify(data) });
+      if (json.token) {
+        localStorage.setItem('token', json.token);
+        localStorage.setItem('name', json.name);
+        localStorage.setItem('role', json.role);
+        localStorage.setItem('userId', json.id);
+        location.href = homeLink();
+      } else {
+        document.getElementById('auth-error').textContent = json.error;
+      }
+    };
+  </script>
+</body>
+</html>

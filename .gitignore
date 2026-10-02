@@ -1,0 +1,4 @@
+node_modules/
+ecoidea.db
+.env
+.DS_Store

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Админ-панель — ЭкоФан</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header>
+    <a href="./" class="logo" id="logo">♻️ ЭкоФан</a>
+    <nav id="nav"></nav>
+  </header>
+
+  <main>
+    <h1>Админ-панель</h1>
+
+    <section>
+      <h2>Пользователи</h2>
+      <ul id="users" class="list"></ul>
+    </section>
+
+    <section>
+      <h2>Мероприятия</h2>
+      <ul id="events-list" class="list"></ul>
+      <form id="event-form" class="card">
+        <input name="title" placeholder="Название" required>
+        <input name="description" placeholder="Описание">
+        <input name="place" placeholder="Место">
+        <input name="date" type="date" id="event-date" required>
+        <small id="event-date-hint" style="color:#666; font-size:0.85rem;"></small>
+        <button type="submit" class="btn btn-primary">Добавить мероприятие</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Товары</h2>
+      <ul id="products-list" class="list"></ul>
+      <form id="product-form" class="card">
+        <input name="name" placeholder="Название" required>
+        <input name="price" type="number" placeholder="Цена в баллах" required>
+        <input name="category" placeholder="Категория (coupon/middle/top)">
+        <input name="badge" placeholder="Бейдж (например: из 12 бутылок)">
+        <button type="submit" class="btn btn-primary">Добавить товар</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Точки приёма</h2>
+      <ul id="points-list" class="list"></ul>
+      <form id="point-form" class="card">
+        <input name="name" placeholder="Название" required>
+        <input name="address" placeholder="Адрес" required>
+        <input name="lat" type="number" step="any" placeholder="Широта (например 56.344853)" required>
+        <input name="lng" type="number" step="any" placeholder="Долгота (например 43.926532)" required>
+        <input name="hours" placeholder="Часы работы">
+        <input name="accepts" placeholder="Что принимает">
+        <button type="submit" class="btn btn-primary">Добавить точку</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="./js/app.js"></script>
+  <script src="./js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Отчёт — ЭкоФан</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <a href="/" class="logo" id="logo">♻️ ЭкоФан</a>
+    <nav id="nav"></nav>
+  </header>
+
+  <main>
+    <div class="report-header">
+      <h1>📊 Отчёт по сданному вторсырью</h1>
+      <select id="period-select" class="period-select">
+        <option value="all">За всё время</option>
+        <option value="day">За сегодня</option>
+        <option value="month">За текущий месяц</option>
+        <option value="year">За текущий год</option>
+      </select>
+    </div>
+
+    <section>
+      <h2>Общая статистика</h2>
+      <div class="stats">
+        <div class="stat">
+          <strong id="total-kg">0</strong>
+          <span>кг всего сдано</span>
+        </div>
+        <div class="stat">
+          <strong id="total-count">0</strong>
+          <span>операций приёма</span>
+        </div>
+        <div class="stat">
+          <strong id="total-types">0</strong>
+          <span>категорий вторсырья</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>По категориям</h2>
+      <div class="card">
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th>Категория</th>
+              <th>Общий вес</th>
+              <th>Количество сдач</th>
+            </tr>
+          </thead>
+          <tbody id="report-body">
+            <tr><td colspan="3" class="empty-state">Загрузка данных…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/report.js"></script>
+</body>
+</html>

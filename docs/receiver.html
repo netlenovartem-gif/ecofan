@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Приёмщик — ЭкоФан</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header>
+    <a href="./" class="logo" id="logo">♻️ ЭкоФан</a>
+    <nav id="nav"></nav>
+  </header>
+
+  <main class="receiver">
+    <h1>Приём сырья</h1>
+
+    <form id="deliver-form" class="card">
+      <label>Пользователь
+        <input type="text" id="user-search" placeholder="Введите имя или телефон" autocomplete="off">
+        <input type="hidden" name="userId" id="user-id">
+      </label>
+      <div id="user-results" class="user-results"></div>
+
+      <label>Точка приёма
+        <select name="pointId" id="point-select" required></select>
+      </label>
+      <label>Тип сырья
+        <select name="type" id="type-select" required></select>
+      </label>
+      <label>Вес, кг
+        <input type="number" name="weight" step="0.1" min="0.1" required>
+      </label>
+      <button type="submit" class="btn btn-primary">Начислить баллы</button>
+    </form>
+
+    <div id="result" class="result hidden"></div>
+
+    <section>
+      <h2>Заказы на выдачу</h2>
+      <ul id="orders-board" class="list"></ul>
+    </section>
+  </main>
+
+  <script src="./js/app.js"></script>
+  <script src="./js/receiver.js"></script>
+</body>
+</html>

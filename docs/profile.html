@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Профиль — ЭкоФан</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header>
+    <a href="./" class="logo" id="logo">♻️ ЭкоФан</a>
+    <nav id="nav"></nav>
+  </header>
+
+  <main class="profile">
+    <h1 id="hello">Привет!</h1>
+
+    <div class="stats">
+      <div class="stat"><strong id="role">Пользователь</strong><span>роль</span></div>
+    </div>
+
+    <div id="user-stats" class="stats hidden">
+      <div class="stat"><strong id="points">0</strong><span>баллов</span></div>
+      <div class="stat"><strong id="level">Новичок</strong><span>уровень</span></div>
+      <div class="stat"><strong id="kg">0</strong><span>кг сдано</span></div>
+      <div class="stat"><strong id="streak">0</strong><span>дней подряд</span></div>
+    </div>
+
+    <section id="user-deliveries" class="hidden">
+      <h2>Последние сдачи</h2>
+      <ul id="deliveries" class="list"></ul>
+    </section>
+
+    <section id="user-orders" class="hidden">
+      <h2>Мои заказы</h2>
+      <ul id="orders" class="list"></ul>
+    </section>
+
+    <section>
+      <h2>Изменить профиль</h2>
+      <form id="profile-form" class="card">
+        <input name="name" id="profile-name" placeholder="Имя" required>
+        <input name="phone" id="profile-phone" placeholder="Телефон" pattern="\+7\d{10}" required>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Сменить пароль</h2>
+      <form id="password-form" class="card">
+        <input name="oldPassword" type="password" placeholder="Старый пароль" required>
+        <input name="newPassword" type="password" placeholder="Новый пароль" required>
+        <button type="submit" class="btn btn-primary">Сменить пароль</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="./js/app.js"></script>
+  <script src="./js/profile.js"></script>
+</body>
+</html>
